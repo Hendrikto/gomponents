@@ -1,27 +1,44 @@
 package html
 
 import (
+	"io"
+
 	g "maragu.dev/gomponents"
 )
 
+type booleanAttribute string
+
+func (a booleanAttribute) Render(w io.Writer) error {
+	_, err := io.WriteString(w, string(a))
+	return err
+}
+
+func (a booleanAttribute) String() string {
+	return string(a)
+}
+
+func (a booleanAttribute) Type() g.NodeType {
+	return g.AttributeType
+}
+
 func Async() g.Node {
-	return g.Attr("async")
+	return booleanAttribute(" async")
 }
 
 func AutoFocus() g.Node {
-	return g.Attr("autofocus")
+	return booleanAttribute(" autofocus")
 }
 
 func AutoPlay() g.Node {
-	return g.Attr("autoplay")
+	return booleanAttribute(" autoplay")
 }
 
 func Checked() g.Node {
-	return g.Attr("checked")
+	return booleanAttribute(" checked")
 }
 
 func Controls() g.Node {
-	return g.Attr("controls")
+	return booleanAttribute(" controls")
 }
 
 func CrossOrigin(v string) g.Node {
@@ -33,11 +50,11 @@ func DateTime(v string) g.Node {
 }
 
 func Defer() g.Node {
-	return g.Attr("defer")
+	return booleanAttribute(" defer")
 }
 
 func Disabled() g.Node {
-	return g.Attr("disabled")
+	return booleanAttribute(" disabled")
 }
 
 func Download(v string) g.Node {
@@ -49,39 +66,39 @@ func Draggable(v string) g.Node {
 }
 
 func Inert() g.Node {
-	return g.Attr("inert")
+	return booleanAttribute(" inert")
 }
 
 func Loop() g.Node {
-	return g.Attr("loop")
+	return booleanAttribute(" loop")
 }
 
 func Multiple() g.Node {
-	return g.Attr("multiple")
+	return booleanAttribute(" multiple")
 }
 
 func Muted() g.Node {
-	return g.Attr("muted")
+	return booleanAttribute(" muted")
 }
 
 func Open() g.Node {
-	return g.Attr("open")
+	return booleanAttribute(" open")
 }
 
 func PlaysInline() g.Node {
-	return g.Attr("playsinline")
+	return booleanAttribute(" playsinline")
 }
 
 func ReadOnly() g.Node {
-	return g.Attr("readonly")
+	return booleanAttribute(" readonly")
 }
 
 func Required() g.Node {
-	return g.Attr("required")
+	return booleanAttribute(" required")
 }
 
 func Selected() g.Node {
-	return g.Attr("selected")
+	return booleanAttribute(" selected")
 }
 
 func Accept(v string) g.Node {
@@ -194,7 +211,7 @@ func FormMethod(v string) g.Node {
 }
 
 func FormNoValidate() g.Node {
-	return g.Attr("formnovalidate")
+	return booleanAttribute(" formnovalidate")
 }
 
 func FormTarget(v string) g.Node {
