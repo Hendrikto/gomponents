@@ -234,9 +234,7 @@ func valueAttr(name, value string) Node {
 			return err
 		}
 
-		if _, err := io.WriteString(w, template.HTMLEscapeString(value)); err != nil {
-			return err
-		}
+		template.HTMLEscape(w, []byte(value))
 
 		if _, err := w.Write(quote); err != nil {
 			return err
